@@ -1,0 +1,13 @@
+Primerio laço definir quantidade (qtp) de pedidos do dia.
+Segundo Passo criar menu while(qtp != qtp)(
+    AdicionarPedido(qtp+= 1);
+    ConsultarPedido();
+    AtualizarPedido();
+    MostrarTodosOsPedidos();
+    RemoverPedido();
+    sout(Limite de pedidos atingidos.)
+    menu Relatorio
+   
+)
+
+    
