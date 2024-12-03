@@ -47,11 +47,11 @@ public class DAOCliente {
     public String listAll(){
         String report="";
         for(Cliente p:databaseCliente){
-            report+= "Id: "+ p.getId()+"\n";
+            report+= "\n\nId: "+ p.getId()+"\n";
             report+= "Nome: "+ p.getNome()+"\n";
             report+= "Rua: "+ p.getRua()+"\n";
             report+= "Bairro: "+ p.getBairro()+"\n";
-            report+= "Numero: "+ p.getNumero()+"\n\n";
+            report+= "Numero: "+ p.getNumero()+"\n";
             report+= "Cidade: "+ p.getCidade()+"\n\n";
         }
         return report;

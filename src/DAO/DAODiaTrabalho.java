@@ -23,7 +23,6 @@ public class DAODiaTrabalho {
     public boolean update(DiaTrabalho p){
         DiaTrabalho paux=read(p.getId());
         if(paux!= null){
-            paux.setId(p.getId());
             paux.setDiaPedido(p.getDiaPedido());
            
             
@@ -39,6 +38,17 @@ public class DAODiaTrabalho {
             return true;
         }
         return false;
+    }
+    
+    public String Pedidopdia(DiaTrabalho t){
+        String report="";
+        for(DiaTrabalho p:databaseDiaTrabalho){
+            if(p == t){
+            report+= "Id: "+ p.getId()+"\n";
+            report+= "Listas de Pedidos: "+ p.getDiaPedido()+"\n\n";
+            }
+        }
+        return report;
     }
 
     public String listAll(){

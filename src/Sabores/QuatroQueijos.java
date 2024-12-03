@@ -9,7 +9,7 @@ import pizzaria.Pizza;
 
 public class QuatroQueijos extends Pizza {
     private static final String INGREDIENTES = "Provolone,Gongorzola,Mussarela, Parmesão";
-
+    private static final String NOME = "Quatro Queijos";
     public QuatroQueijos(String tamanho, Double preco, String borda) {
         super(tamanho, preco, borda);
     }
@@ -17,6 +17,11 @@ public class QuatroQueijos extends Pizza {
     @Override
     public  String getIngredientes() {
         return INGREDIENTES;
+    }
+    
+     @Override
+    public  String getNome() {
+        return NOME;
     }
 }
     

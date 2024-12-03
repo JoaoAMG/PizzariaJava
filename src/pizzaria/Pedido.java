@@ -6,17 +6,19 @@ import java.util.List;
 
 
 public class Pedido {
-    private Integer id = 0;
+    private static int inc = 1;
+    private Integer id ;
     private Cliente cliente;
     private List<Pizza> listaPizza = new ArrayList<>();
     private Integer quantidade = 0;
     private Double precoPedido = 0.00;
 
     public Pedido(){}
-    public Pedido( Cliente cliente) {
-        this.id = id += 1;
+    public Pedido( Cliente cliente, List<Pizza> listaPizza ) {
+        this.id = inc++;
         this.cliente = cliente;  
         this.listaPizza = listaPizza;
+        this.quantidade = listaPizza.size();
     }
 
     
@@ -63,27 +65,28 @@ public class Pedido {
 
     
     
-    public List adicionarListaPizza(  Pizza pizza ){        
-        listaPizza.add(pizza);
-        quantidade += 1;
-        return  listaPizza;
-    }
+//    public List adicionarListaPizza(  Pizza pizza ){        
+//        listaPizza.add(pizza);
+//        quantidade += 1;
+//        return  listaPizza;
+//    }
     
-    public void  mostrarListaPizza( ){        
-        for(Pizza o : listaPizza){
-            System.out.println(o+"\n");
-            
-        }        
-    }
+//    public void  mostrarListaPizza( ){        
+//        for(Pizza o : listaPizza){
+//            System.out.println(o+"\n");
+//            
+//        }        
+//    }
     
-    public List removerListaPizza(  Pizza pizza ){        
-        listaPizza.remove(pizza);
-        quantidade -= 1;
-        return  listaPizza;
-    }
+//    public List removerListaPizza(  Pizza pizza ){        
+//        listaPizza.remove(pizza);
+//        quantidade -= 1;
+//        return  listaPizza;
+//    }
    
     
     public Double CalcularPedido(){
+        
     for(Pizza pizza : listaPizza ){
         precoPedido += pizza.getPreco();
     }
@@ -93,7 +96,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "\nPedido(*):" + "\n"+cliente + "quantidade de pizzas=" + quantidade + ", preco do Pedido=" + String.format("%.2f", precoPedido) + '}';
+        return "\nPedido(*):" + "\n"+ cliente.getNome() + "quantidade de pizzas=" + quantidade  + ", preco do Pedido=" + String.format("%.2f", precoPedido) + '}';
     }
 
    

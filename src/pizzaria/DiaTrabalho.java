@@ -5,16 +5,16 @@ import java.util.List;
 
 public class DiaTrabalho {
     private Integer id;
-    private Integer qtp = 0;
-    private List<Pedido> diaPedido = new ArrayList<>(qtp);
+    private List<Pedido> diaPedido = new ArrayList<>();
     
     
-    public DiaTrabalho(){}
-
-    public DiaTrabalho(Integer qtp) {
-        this.qtp = qtp;
+    public DiaTrabalho(Integer id,List<Pedido> diaPedido){
+        this.id = id;
+        this.diaPedido = diaPedido;
+        
     }
-    
+
+   
 
     public Integer getId() {
         return id;
@@ -24,13 +24,9 @@ public class DiaTrabalho {
         this.id = id;
     }
 
-    public Integer getQtp() {
-        return qtp;
-    }
+   
 
-    public void setQtp(Integer qtp) {
-        this.qtp = qtp;
-    }
+    
     public List<Pedido> getDiaPedido() {
         return diaPedido;
     }

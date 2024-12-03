@@ -1,7 +1,8 @@
 package pizzaria;
 
 public abstract class Pizza {
-    private Integer id = 0;
+    private static int inc = 1;
+    private Integer id;
     private String tamanho;
     private Double preco;
     private String borda;
@@ -9,7 +10,7 @@ public abstract class Pizza {
    
 
     public Pizza(String tamanho, Double preco, String borda) {
-        this.id = id += 1;
+        this.id = inc++;
         this.tamanho = tamanho;
         this.preco = preco;
         this.borda = borda;
@@ -20,9 +21,7 @@ public abstract class Pizza {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    
     
     
     public String getTamanho() {
@@ -48,11 +47,11 @@ public abstract class Pizza {
     public void setBorda(String borda) {
         this.borda = borda;
     }
-
+    public abstract String getNome();
     public abstract String getIngredientes();
     @Override
     public String toString() {
-        return "Pizza \ntamanho: "   + tamanho + "\npreco: " 
+        return "Pizza" + getNome() + " \ntamanho: "   + tamanho + "\npreco: " 
                 + preco + "\nborda: " + borda + "\ningredientes: " + getIngredientes()+"\n"  ;
     }
     

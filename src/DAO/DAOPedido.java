@@ -2,6 +2,7 @@ package DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import pizzaria.Cliente;
 import pizzaria.Pedido;
 
 
@@ -11,6 +12,7 @@ public class DAOPedido {
     
     public void create(Pedido p) {
         databasePedido.add(p);
+        p.CalcularPedido();
     }
     
     public Pedido read(int id) {
@@ -42,6 +44,20 @@ public class DAOPedido {
         return false;
     }
 
+    public String PedidoPCliente(Cliente cliente){
+        String report="";
+        for(Pedido p:databasePedido){
+            if( cliente == p.getCliente()){
+            report+= "Id: "+ p.getId()+"\n";
+            report+=  p.getCliente()+"\n";
+            report+= "Pizzas Pedidas: "+ p.getListaPizza()+"\n";
+            report+= "Quantidade de Pizzas: "+ p.getQuantidade()+ "Pizza(s)" + "\n";
+            report+= "Preco total: "+ p.getPrecoPedido()+"\n\n";
+        }
+        }
+        return report;
+    }
+    
     public String listAll(){
         String report="";
         for(Pedido p:databasePedido){
@@ -53,5 +69,7 @@ public class DAOPedido {
         }
         return report;
     }
+    
+    
     
 }

@@ -9,7 +9,8 @@ package pizzaria;
  * @author aluno
  */
 public class Cliente {
-    private Integer id = 0;
+    private static int inc = 1;
+    private Integer id ;
     private String nome;
     private String rua;
     private String bairro;
@@ -17,7 +18,7 @@ public class Cliente {
     private String cidade;
 
     public Cliente(String nome,String rua, String bairro, Integer numero, String cidade) {
-        this.id = id += 1;
+        this.id = inc++;
         this.nome = nome;
         this.rua = rua;
         this.bairro = bairro;
@@ -30,9 +31,7 @@ public class Cliente {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    
 
     public String getNome() {
         return nome;
@@ -77,7 +76,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Nome cliente: " + nome + "\nEndereco\n" + "rua:" + rua + ", bairro:" + bairro + ", numero:" + numero + ", cidade:" + cidade +"\n";
+        return "id: " + getId() + "\nNome cliente: " + nome + "\nEndereco\n" + "rua:" + rua + "\nbairro:" + bairro + ",\nnumero:" + numero + "\n cidade:" + cidade +"\n";
     }
     
     
