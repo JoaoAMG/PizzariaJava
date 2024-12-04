@@ -14,9 +14,10 @@ public class Pizzaria {
     
     public static void menuGeral() {
         System.out.println("\n\n\n");
-        System.out.println(" 1  Pizzas");
-        System.out.println(" 2  Clientes");
-        System.out.println("3-  Pedidos");
+        
+        System.out.println("1- Menu de  Pizzas");
+        System.out.println("2-  Menu de Clientes");
+        System.out.println("3-  Menu de Pedidos");
        
         
     } 
@@ -69,19 +70,35 @@ public class Pizzaria {
     }   
     
     public static void main(String[] args) {
-        int quantidadePedidosTotal = 0;
-        int quantidadePedidosAtual = 0;
-        int geral, op1,op2,op3,op4;
+        
+        int geral, op1,op2,op3,op4,i,j;
         DAOCliente daocliente = new DAOCliente();
         DAOPizza daopizza = new DAOPizza();
         DAOPedido daopedido = new DAOPedido();
         DAODiaTrabalho daodiatrabalho = new DAODiaTrabalho();
+        // Instanciações para testes rapidos
+        daopizza.create(new Calabresa("Grande",35.0,"sem recheio"));
+        daopizza.create(new FrangoComCatupiry("Media",23.50,"Recheio de Catupiry"));
+        daopizza.create(new Marguerita("Pequena",15.0," recheio de mussarela"));
+        daopizza.create(new QuatroQueijos("Grande",30.0,"sem recheio"));
         
-        for(int i = 1; i <= 7; i++) {
-        System.out.println("Dia de trabalho: dia " + i);
+        daocliente.create(new Cliente("Matheus","rua dos tucanos","vila leopoldina",85,"Araraquara-SP"));
+        daocliente.create(new Cliente("Joao","rua Dom Pedro I","Ipiranga",23,"Guarapari-ES"));
+        daocliente.create(new Cliente("Diego","rua Julio cesar","Jardim Marajoara",5,"Niteroi-RJ"));
+        
+        System.out.println("Bem vindo ao Sistema Da Pizzaria!");
+        for( j = 1; j <= 7; j++) {
+            int quantidadePedidosTotal = 0;
+            int quantidadePedidosAtual = 0;
+        System.out.println("Dia de trabalho: dia " + j);
         System.out.println("Quantos pedidos serao realizados hj?");
         Scanner Op = new Scanner(System.in);
-        quantidadePedidosTotal = Op.nextInt();  
+        quantidadePedidosTotal = Op.nextInt();
+        if(quantidadePedidosTotal == 0){
+                System.out.println("Insira um numero maior do que zero\n");
+                j -= 1;
+        }
+        else{
         List<Pedido> diaPedido = new ArrayList<>();
         
         
@@ -95,10 +112,10 @@ public class Pizzaria {
                         op1 = Op.nextInt();
                         switch(op1){
                             case 1: 
-                                System.out.println("\n\n\n (1) calabresa"
+                                System.out.println("\n\n\n(1) calabresa"
                                         + "\n(2) Frango com Catupiry"
                                         + "\n(3) Marguerita"
-                                        + "\n (4) Quatro queijos "
+                                        + "\n(4) Quatro queijos "
                                         + "\nQual Sabor de Pizza deseja: ");
                                 int decsabor = Op.nextInt();
                                 Op.nextLine();
@@ -121,7 +138,7 @@ public class Pizzaria {
                                 else System.out.println("\n\n\nnumero invalido tente novamente");
                             break;
                             case 2:
-                                System.out.println("\n\n\nInforme o Id da Pizza");
+                                System.out.println("\n\n\nInforme o Id da Pizza que deseja consultar: ");
                                 int buscarpizza = Op.nextInt();
                                 System.out.println(daopizza.read(buscarpizza)); 
                             break;
@@ -129,12 +146,12 @@ public class Pizzaria {
                              System.out.println("\n\n\ninsira o id da pizza que deseja atualizar");
                               int atid = Op.nextInt();
                               Op.nextLine();
-                            System.out.println("defina o tamanho: ");
+                            System.out.println("defina o tamanho da pizza: ");
                                 String attamanho = Op.nextLine();
-                                System.out.println("defina o preco: ");
+                                System.out.println("defina o preco da pizza: ");
                                 Double atpreco = Op.nextDouble();
                                 Op.nextLine();
-                                System.out.println("defina a borda: ");
+                                System.out.println("defina a borda da pizza: ");
                                 String atborda = Op.nextLine();
                                 
                                 Pizza pizzaUP = daopizza.read(atid);
@@ -152,8 +169,8 @@ public class Pizzaria {
                                 int delpizza = Op.nextInt();
                                 Pizza pizzaremove = daopizza.read(delpizza);
                                 if(daopizza.delete(pizzaremove))
-                                   System.out.println("Exclusao com sucesso");
-                                else System.out.println("Exclusao com fracasso");
+                                   System.out.println("Exclusao de pizza feita com sucesso");
+                                else System.out.println("Exclusao feita com fracasso");
                             break;
                             
                         }
@@ -165,26 +182,27 @@ public class Pizzaria {
                         switch(op2){
                             case 1:
                                 Op.nextLine();
-                                System.out.println("\n\n\ninsira seu nome");
+                                System.out.println("\n\n\ninsira o nome do cliente : ");
                                 String nome = Op.nextLine();
                                 
                                 
-                                System.out.println("insira sua rua");
+                                System.out.println("insira a rua do cliente: ");
                                 
                                 String rua = Op.nextLine();
                                 
                               
-                                System.out.println("insira seu bairro");
+                                System.out.println("insira o bairro do cliente: ");
                                 String bairro = Op.nextLine();
                               
-                                System.out.println("insira seu numero");
+                                System.out.println("insira o numero do cliente: ");
                                 int numero = Op.nextInt();
-                                System.out.println("insira seu cidade");
+                                System.out.println("insira a cidade do cliente : ");
                                 Op.nextLine();
                                 String cidade = Op.nextLine();
                                 
                              
                                 daocliente.create(new Cliente(nome,rua,bairro,numero,cidade));
+                                System.out.println("\nPerfil adicionado com sucesso!");
                             break;
                             case 2: 
                                 System.out.println("\n\n\nInforme o Id do Cliente");
@@ -195,17 +213,17 @@ public class Pizzaria {
                                 System.out.println("\n\n\ninsira o id do cliente que deseja atualizar");
                                 int atid = Op.nextInt();
                                 Op.nextLine();
-                                System.out.println("insira seu nome");
+                                System.out.println("insira o nome do cliente:");
                                 String atnome = Op.nextLine();
-                                System.out.println("insira sua rua");
+                                System.out.println("insira a rua do cliente:");
                                 Op.nextLine();
                                 String atrua = Op.nextLine();
-                                System.out.println("insira seu bairro");
+                                System.out.println("insira o bairro do cliente:");
                                 
                                 String atbairro = Op.nextLine();
-                                System.out.println("insira seu numero");
+                                System.out.println("insira o numero do cliente: ");
                                 int atnumero = Op.nextInt();
-                                System.out.println("insira seu cidade");
+                                System.out.println("insira a cidade do cliente: ");
                                 Op.nextLine();
                                 String atcidade = Op.nextLine();
                                 
@@ -242,21 +260,41 @@ public class Pizzaria {
                             //chamada da função
                             System.out.println("\n\n\n escolha o cliente do pedido por id: ");
                             int clientepedido = Op.nextInt();
-                            System.out.println("Escolha Quantas Pizzas deseja");
+                            System.out.println("Escolha Quantas Pizzas deseja inserir no pedido: ");
                             int maxpizzas = Op.nextInt();
                             List<Pizza> pizzasDoCliente = new ArrayList();
-                            for(i = 1; i <= maxpizzas; i++){
+
+                            for( i = 1; i <= maxpizzas; i++){
                                 System.out.println("Selecione A pizza por id");
                                 int selpizzaid = Op.nextInt();
-                                pizzasDoCliente.add(daopizza.read(selpizzaid));
+                                    
+                                    Pizza pizzaaux = daopizza.read(selpizzaid);
+                                
+                                    if(pizzaaux == null){
+                                        System.out.println("Pizza nao encontrada tente novamente");
+                                        pizzasDoCliente.clear();
+                                        break;
+                                    }
+                                    
+                                    
+                                    pizzasDoCliente.add(pizzaaux);
+                                
+                                    
+                                
+                                
                             }
-                            
-                            daopedido.create(new Pedido(daocliente.read(clientepedido),pizzasDoCliente));
-                            diaPedido.add(new Pedido(daocliente.read(clientepedido),pizzasDoCliente));
-                            int funcalcularpedido = 0;
+                            if(pizzasDoCliente.isEmpty()){
+                                System.out.println("\nPedido nao permitido");
+                            }
+                            else{
+                            Pedido pedidoaux = new Pedido(daocliente.read(clientepedido),pizzasDoCliente);
+                            daopedido.create(pedidoaux);
+                            diaPedido.add(pedidoaux);
+                            quantidadePedidosAtual++;
+                            }
                               
                             
-                            quantidadePedidosAtual++;
+                            
                             break;
                          case 2:
                             System.out.println("\n\n\n");
@@ -273,41 +311,50 @@ public class Pizzaria {
                             int atid = Op.nextInt();
                             System.out.println("\n escolha o cliente do pedido por id: ");
                             int atclientepedido = Op.nextInt();
-                            System.out.println("Escolha Quantas Pizzas deseja");
+                            System.out.println("Escolha Quantas Pizzas inserir no pedido:");
                             int atmaxpizzas = Op.nextInt();
                             List<Pizza> atpizzasDoCliente = new ArrayList();
                             for(i = 1; i <= atmaxpizzas; i++){
-                                System.out.println("Selecione A pizza por id");
+                                System.out.println("Selecione A pizza por id:");
                                 int selpizzaid = Op.nextInt();
                                 atpizzasDoCliente.add(daopizza.read(selpizzaid));
                             }
                             Pedido pedidoUP = daopedido.read(atid);
+                           
                             pedidoUP.setCliente(daocliente.read(atclientepedido));
                             pedidoUP.setListaPizza(atpizzasDoCliente);
+                            pedidoUP.setQuantidade(atmaxpizzas);
                             daopedido.update(pedidoUP);
-                            diaPedido.remove(atid);
-                            diaPedido.add(pedidoUP);
+                            
+                            for (int d = 1; i < diaPedido.size(); d++) {
+                                if (diaPedido.get(i).getId() == atid) { // Supondo que getId retorna o ID
+                                diaPedido.set(i, pedidoUP);
+                                }
+                                }
                            
                             
                         case 4:
                             System.out.println("\n\n\n");
-                            System.out.println("Listando todos os pedidos");
+                            System.out.println("Listando todos os pedidos...");
                             System.out.println(daopedido.listAll()); 
                             break;
                         case 5:
                             System.out.println("\n\n\n");
-                            System.out.println("remover pedido");
+                            System.out.println("Remover pedido");
                             System.out.println("Informe o id do pedido que deseja excluir: ");
                                 int delpedido = Op.nextInt();
                                 Pedido pedidoremove = daopedido.read(delpedido);
                                 if(daopedido.delete(pedidoremove)){
-                                   System.out.println("Exclusao com sucesso");
+                                   System.out.println("Exclusao de pedido com sucesso");
                                    diaPedido.remove(delpedido);
                                 }
-                                else System.out.println("Exclusao com fracasso");
+                                else System.out.println("Exclusao do pedido não foi possivel tente novamente");
                             
                             break;
                         case 6:
+                            System.out.println(daocliente.listAll());
+                            break;
+                        case 7:
                             System.out.println("\n\n\n");
                             System.out.println("saindo do menu...");
                             break;
@@ -320,10 +367,13 @@ public class Pizzaria {
             }
             }while(quantidadePedidosAtual < quantidadePedidosTotal);  
             do{
+                if(j == 7)
+                    System.out.println("Parabens voce finalizou a semana!!!");
                 menuFinalDoDia();
                 op4 = Op.nextInt();
-                DiaTrabalho diatrabalho = new DiaTrabalho(i,diaPedido);
+                DiaTrabalho diatrabalho = new DiaTrabalho(j,diaPedido);
                 daodiatrabalho.create(diatrabalho);
+                
                 switch(op4) {
                     
                     case 1: 
@@ -354,14 +404,17 @@ public class Pizzaria {
                             pedidoUP.setCliente(daocliente.read(atclientepedido));
                             pedidoUP.setListaPizza(atpizzasDoCliente);
                             daopedido.update(pedidoUP);
-                            diaPedido.remove(atid);
-                            diaPedido.add(pedidoUP);
+                            for (int d = 1; d < diaPedido.size(); d++) {
+                                if (diaPedido.get(i).getId() == atid) { // Supondo que getId retorna o ID
+                                diaPedido.set(i, pedidoUP);
+                                }
+                                }
                             diatrabalhoUP.setDiaPedido(diaPedido);
                             daodiatrabalho.update(diatrabalhoUP);
                         break;
                     case 3: 
                         System.out.println("\n\n\n");
-                        System.out.println(daodiatrabalho.listAll()); 
+                        System.out.println(daodiatrabalho.listAll());
                         break;
                     case 4:
                         System.out.println("\n\n\n");
@@ -370,6 +423,7 @@ public class Pizzaria {
                                 int iddiatrabalho = Op.nextInt();
                                 DiaTrabalho diaremove = daodiatrabalho.read(iddiatrabalho);
                                 if(daodiatrabalho.delete(diaremove)){
+                                    daodiatrabalho.delete(diaremove);
                                    System.out.println("Exclusao com sucesso");                
                                 }
                                 else System.out.println("Exclusao com fracasso");
@@ -377,7 +431,7 @@ public class Pizzaria {
                     
                     case 5:
                         System.out.println("\n\n\n");
-                        System.out.println("Exibir Pedido por cliente:");
+                        System.out.println("1-Exibir Pedido por cliente:");
                         System.out.println("Total de pedido: " + quantidadePedidosAtual);
                         System.out.println("Inseir o id do cliente");
                         int idcliente = Op.nextInt();
@@ -398,7 +452,7 @@ public class Pizzaria {
                             break;
                         case 7:
                             System.out.println("\n\n\n");
-                            System.out.println("Dia "+i+ " finalizado");
+                            System.out.println("Dia "+j+ " finalizado");
                             break;
                         default:
                             System.out.println("\n\n\n");
@@ -406,6 +460,9 @@ public class Pizzaria {
                             break;
                 }
             }while(op4!=7);
+        }
+        if(j == 7)
+                System.out.println("Parabens voce finalizou a semana!!!");
         }
     }
 }

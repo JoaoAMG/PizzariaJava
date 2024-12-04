@@ -3,7 +3,7 @@ package Sabores;
 import pizzaria.Pizza;
 
 public class Marguerita extends Pizza {
-    private static final String INGREDIENTES = "Mussarela,Manjericão,tomate,Molho de tomate";
+    private static final String INGREDIENTES = "Mussarela,Manjericao,tomate,Molho de tomate";
     private static final String NOME = "Marguerita";
     public Marguerita(String tamanho, Double preco, String borda) {
         super(tamanho, preco, borda);

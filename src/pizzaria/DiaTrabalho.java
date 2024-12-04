@@ -53,4 +53,11 @@ public class DiaTrabalho {
         return  diaPedido;
     }
 
+    @Override
+    public String toString() {
+        return "DiaTrabalho{" + "dia " + id + ":" + "\ndiaPedido=" + diaPedido + '}';
+    }
+    
+    
+
 }

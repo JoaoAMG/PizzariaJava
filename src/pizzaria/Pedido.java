@@ -11,7 +11,7 @@ public class Pedido {
     private Cliente cliente;
     private List<Pizza> listaPizza = new ArrayList<>();
     private Integer quantidade = 0;
-    private Double precoPedido = 0.00;
+    private Double precoPedido;
 
     public Pedido(){}
     public Pedido( Cliente cliente, List<Pizza> listaPizza ) {
@@ -86,8 +86,10 @@ public class Pedido {
    
     
     public Double CalcularPedido(){
+    precoPedido = 0.0;
         
     for(Pizza pizza : listaPizza ){
+        
         precoPedido += pizza.getPreco();
     }
     return precoPedido;
@@ -96,7 +98,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "\nPedido(*):" + "\n"+ cliente.getNome() + "quantidade de pizzas=" + quantidade  + ", preco do Pedido=" + String.format("%.2f", precoPedido) + '}';
+        return "\nPedido(*):" + "\n"+ cliente.getNome() + " quantidade de pizzas=" + quantidade  + ", preco do Pedido=" + String.format("%.2f", CalcularPedido()) + '}';
     }
 
    

@@ -11,8 +11,9 @@ public class DAOPedido {
         private List<Pedido> databasePedido= new ArrayList();
     
     public void create(Pedido p) {
-        databasePedido.add(p);
         p.CalcularPedido();
+        databasePedido.add(p);
+        
     }
     
     public Pedido read(int id) {
@@ -25,7 +26,7 @@ public class DAOPedido {
     public boolean update(Pedido p){
         Pedido paux=read(p.getId());
         if(paux!= null){
-           
+            
             paux.setListaPizza(p.getListaPizza());
             paux.setQuantidade(p.getQuantidade());
             paux.setPrecoPedido(p.getPrecoPedido());
@@ -48,8 +49,8 @@ public class DAOPedido {
         String report="";
         for(Pedido p:databasePedido){
             if( cliente == p.getCliente()){
-            report+= "Id: "+ p.getId()+"\n";
-            report+=  p.getCliente()+"\n";
+            report+= "Id do pedido: "+ p.getId()+"\n";
+            report+= "Cliente: " + p.getCliente()+"\n";
             report+= "Pizzas Pedidas: "+ p.getListaPizza()+"\n";
             report+= "Quantidade de Pizzas: "+ p.getQuantidade()+ "Pizza(s)" + "\n";
             report+= "Preco total: "+ p.getPrecoPedido()+"\n\n";
@@ -61,8 +62,8 @@ public class DAOPedido {
     public String listAll(){
         String report="";
         for(Pedido p:databasePedido){
-            report+= "Id: "+ p.getId()+"\n";
-            report+=  p.getCliente()+"\n";
+            report+= "Id do pedido: "+ p.getId()+"\n";
+            report+= "Dados do Cliente: "+ p.getCliente()+"\n";
             report+= "Pizzas Pedidas: "+ p.getListaPizza()+"\n";
             report+= "Quantidade de Pizzas: "+ p.getQuantidade()+ "Pizza(s)" + "\n";
             report+= "Preco total: "+ p.getPrecoPedido()+"\n\n";

@@ -40,7 +40,7 @@ public class DAODiaTrabalho {
         return false;
     }
     
-    public String Pedidopdia(DiaTrabalho t){
+      public String Pedidopdia(DiaTrabalho t){
         String report="";
         for(DiaTrabalho p:databaseDiaTrabalho){
             if(p == t){
@@ -48,17 +48,22 @@ public class DAODiaTrabalho {
             report+= "Listas de Pedidos: "+ p.getDiaPedido()+"\n\n";
             }
         }
+        if(report == "")
+              System.out.println("dia excluido");
         return report;
     }
-
-    public String listAll(){
+    
+     public String listAll(){
         String report="";
         for(DiaTrabalho p:databaseDiaTrabalho){
-            report+= "Id: "+ p.getId()+"\n";
-            report+= "Listas de Pedidos: "+ p.getDiaPedido()+"\n\n";
+            report= "Id: "+ p.getId()+"\n";
+            report= "Listas de Pedidos: "+ p.getDiaPedido()+"\n\n";
             
         }
         return report;
     }
+    
+
+   
     
 }
