@@ -367,8 +367,7 @@ public class Pizzaria {
             }
             }while(quantidadePedidosAtual < quantidadePedidosTotal);  
             do{
-                if(j == 7)
-                    System.out.println("Parabens voce finalizou a semana!!!");
+               
                 menuFinalDoDia();
                 op4 = Op.nextInt();
                 DiaTrabalho diatrabalho = new DiaTrabalho(j,diaPedido);
