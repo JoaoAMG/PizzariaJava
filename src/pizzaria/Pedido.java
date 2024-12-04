@@ -65,24 +65,7 @@ public class Pedido {
 
     
     
-//    public List adicionarListaPizza(  Pizza pizza ){        
-//        listaPizza.add(pizza);
-//        quantidade += 1;
-//        return  listaPizza;
-//    }
-    
-//    public void  mostrarListaPizza( ){        
-//        for(Pizza o : listaPizza){
-//            System.out.println(o+"\n");
-//            
-//        }        
-//    }
-    
-//    public List removerListaPizza(  Pizza pizza ){        
-//        listaPizza.remove(pizza);
-//        quantidade -= 1;
-//        return  listaPizza;
-//    }
+
    
     
     public Double CalcularPedido(){
