@@ -1,21 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Sabores;
 
-import pizzaria.Pizza;
-
-public class FrangoComCatupiry extends Pizza {
-    private static final String INGREDIENTES = "Frango,Catupiry,Molho de tomate";
-    private static final String NOME = "Frango com Catupriy";
-    public FrangoComCatupiry(String tamanho, Double preco, String borda) {
-        super(tamanho, preco, borda);
-    }
-
-    @Override
-    public  String getIngredientes() {
-        return INGREDIENTES;
-    }
+/**
+ *
+ * @author Pichau
+ */
+public class FrangoComCatupiry {
     
-    @Override
-    public  String getNome() {
-        return NOME;
-    }
 }
